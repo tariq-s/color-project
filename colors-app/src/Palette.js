@@ -9,8 +9,8 @@ export default class Palette extends Component {
     ));
     console.log(colorBoxes);
     return (
-      <div className="Palette">
-        <div className="Palette-colors">{colorBoxes}</div>
+      <div className="palette">
+        <div className="palette-colors">{colorBoxes}</div>
       </div>
     );
   }
