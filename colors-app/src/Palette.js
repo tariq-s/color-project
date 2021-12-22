@@ -7,21 +7,29 @@ import Navbar from "./Navbar";
 export default class Palette extends Component {
   constructor(props) {
     super(props);
-    this.state = { level: 500 };
+    this.state = { level: 500, format: "hex" };
     this.changeLevel = this.changeLevel.bind(this);
+    this.changeFormat = this.changeFormat.bind(this);
   }
   changeLevel(level) {
     this.setState({ level });
   }
+  changeFormat(format) {
+    this.setState({ format });
+  }
   render() {
-    const { level } = this.state;
+    const { level, format } = this.state;
     const { colors } = this.props.palette;
     const colorBoxes = colors[level].map((color) => (
-      <ColorBox background={color.rgb} name={color.name} />
+      <ColorBox background={color[format]} name={color.name} />
     ));
     return (
       <div className="palette">
-        <Navbar level={level} changeLevel={this.changeLevel} />
+        <Navbar
+          level={level}
+          changeLevel={this.changeLevel}
+          changeFormat={this.changeFormat}
+        />
         <div className="palette-colors">{colorBoxes}</div>
       </div>
     );
