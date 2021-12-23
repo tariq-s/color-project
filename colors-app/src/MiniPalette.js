@@ -12,6 +12,8 @@ const styles = {
     "&:hover": {
       cursor: "pointer",
     },
+    display: "flex",
+    flexDirection: "column",
   },
   colors: {
     backgroundColor: "#dae1e4",
