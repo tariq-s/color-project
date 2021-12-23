@@ -36,7 +36,6 @@ export default class App extends Component {
           render={(routeProps) => (
             <SingleColorPalette
               colorId={routeProps.match.params.colorId}
-              paletteId={routeProps.match.params.paletteId}
               palette={generatePalette(
                 this.findPalette(routeProps.match.params.paletteId)
               )}
