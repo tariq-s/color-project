@@ -32,7 +32,7 @@ export default class SingleColorPalette extends Component {
         background={color[format]}
         paletteId={palette.id}
         colorId={colorId}
-        showLink={false}
+        showingFullPalette={false}
       />
     ));
     return (
