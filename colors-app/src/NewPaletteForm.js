@@ -10,6 +10,8 @@ import Button from "@material-ui/core/Button";
 import { ChromePicker } from "react-color";
 import DraggableColorBox from "./DraggableColorBox";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import { AppBar, CssBaseline, Toolbar } from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
 // import styles from "./styles/NewPaletteFormStyles";
 // import seedColors from "./seedColors";
 
@@ -82,6 +84,7 @@ class NewPaletteForm extends Component {
     this.upadateCurrentColor = this.upadateCurrentColor.bind(this);
     this.addNewColor = this.addNewColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -122,12 +125,54 @@ class NewPaletteForm extends Component {
   handleChange(e) {
     this.setState({ newName: e.target.value });
   }
+
+  handleSubmit() {
+    const newName = "New Test Palette";
+    const { savePalette } = this.props;
+    const newPalette = {
+      paletteName: newName,
+      colors: this.state.colors,
+      id: newName.toLowerCase().replaceAll(" ", "-"),
+    };
+    savePalette(newPalette);
+    this.props.history.push("/");
+  }
+
   render() {
     const { classes, theme } = this.props;
     const { open, colors } = this.state;
 
     return (
       <div className={classes.root}>
+        <CssBaseline />
+        <AppBar
+          color="default"
+          position="fixed"
+          className={classNames(classes.appBar, {
+            [classes.appBarShift]: open,
+          })}
+        >
+          <Toolbar disableGutters={!open}>
+            <IconButton
+              color="inherit"
+              aria-label="Open drawer"
+              onClick={this.handleDrawerOpen}
+              className={classNames(classes.menuButton, open && classes.hide)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" color="inherit" noWrap>
+              Persistent drawer
+            </Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.handleSubmit}
+            >
+              Save Palette
+            </Button>
+          </Toolbar>
+        </AppBar>
         <Drawer
           className={classes.drawer}
           variant="persistent"
