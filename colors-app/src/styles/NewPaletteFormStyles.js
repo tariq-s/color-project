@@ -1,7 +1,5 @@
 import { DRAWER_WIDTH } from "../constants";
 
-const drawerWidth = 400;
-
 const styles = (theme) => ({
   root: {
     display: "flex",
