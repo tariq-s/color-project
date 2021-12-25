@@ -89,7 +89,7 @@ class NewPaletteForm extends Component {
     };
 
     this.addNewColor = this.addNewColor.bind(this);
-
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.deleteColor = this.deleteColor.bind(this);
     this.clearColors = this.clearColors.bind(this);
     this.addRandomColor = this.addRandomColor.bind(this);
@@ -117,6 +117,7 @@ class NewPaletteForm extends Component {
 
   handleSubmit(newPaletteName) {
     const { savePalette } = this.props;
+
     const newPalette = {
       paletteName: newPaletteName,
       colors: this.state.colors,
