@@ -117,7 +117,6 @@ class NewPaletteForm extends Component {
 
   handleSubmit(newPaletteName) {
     const { savePalette } = this.props;
-
     const newPalette = {
       paletteName: newPaletteName,
       colors: this.state.colors,
