@@ -76,12 +76,15 @@ const styles = (theme) => ({
 });
 
 class NewPaletteForm extends Component {
+  static defaultProps = {
+    maxColors: 20,
+  };
   constructor(props) {
     super(props);
     this.state = {
       open: true,
       currentColor: "teal",
-      colors: [],
+      colors: this.props.palettes[0].colors,
       newColorName: "",
       newPaletteName: "",
     };
@@ -90,6 +93,8 @@ class NewPaletteForm extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.deleteColor = this.deleteColor.bind(this);
+    this.clearColors = this.clearColors.bind(this);
+    this.addRandomColor = this.addRandomColor.bind(this);
   }
 
   componentDidMount() {
@@ -155,15 +160,24 @@ class NewPaletteForm extends Component {
     this.props.history.push("/");
   }
 
+  clearColors() {
+    this.setState({ colors: [] });
+  }
+
+  addRandomColor() {
+    const allColors = this.props.palettes.flatMap((palette) => palette.colors);
+    const randomColor = allColors[Math.floor(Math.random() * allColors.length)];
+    this.setState({ colors: [...this.state.colors, randomColor] });
+  }
   onSortEnd = ({ oldIndex, newIndex }) => {
     this.setState(({ colors }) => ({
       colors: arrayMove(colors, oldIndex, newIndex),
     }));
   };
   render() {
-    const { classes, theme } = this.props;
+    const { maxColors, classes, theme } = this.props;
     const { open, colors } = this.state;
-
+    const paletteIsFull = colors.length === maxColors;
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -236,6 +250,8 @@ class NewPaletteForm extends Component {
                 variant="contained"
                 className={classes.button}
                 color="primary"
+                onClick={this.addRandomColor}
+                disabled={paletteIsFull}
               >
                 Random Color
               </Button>
@@ -259,7 +275,12 @@ class NewPaletteForm extends Component {
               <Button
                 type="submit"
                 variant="contained"
-                style={{ backgroundColor: this.state.currentColor }}
+                style={{
+                  backgroundColor: paletteIsFull
+                    ? "grey"
+                    : this.state.currentColor,
+                }}
+                disabled={paletteIsFull}
               >
                 Add color
               </Button>
