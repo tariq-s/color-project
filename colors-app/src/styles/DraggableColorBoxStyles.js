@@ -1,3 +1,4 @@
+import sizes from "./sizes";
 export default {
   root: {
     width: "20%",
@@ -11,10 +12,23 @@ export default {
       color: "white",
       transform: "scale(1.5)",
     },
+    [sizes.down("lg")]: {
+      width: "25%",
+      height: "20%",
+    },
+    [sizes.down("md")]: {
+      width: "50%",
+      height: "10%",
+    },
+    [sizes.down("sm")]: {
+      width: "100%",
+      height: "5%",
+    },
   },
   boxContent: {
     position: "absolute",
     width: "calc(100% - 20px)",
+    height: "20px",
     left: "0px",
     bottom: "0px",
     padding: "10px",
@@ -24,6 +38,11 @@ export default {
     fontSize: "12px",
     display: "flex",
     justifyContent: "space-between",
+    "& span": {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
   },
   deleteIcon: {
     transition: "all 0.3s ease-in-out",
