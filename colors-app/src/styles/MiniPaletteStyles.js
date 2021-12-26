@@ -6,8 +6,9 @@ export default {
     padding: "0.5rem",
     position: "relative",
     overflow: "hidden",
-    "&:hover": {
-      cursor: "pointer",
+    cursor: "pointer",
+    "&:hover svg": {
+      opacity: "1",
     },
     display: "flex",
     flexDirection: "column",
@@ -38,5 +39,19 @@ export default {
     margin: "0 auto",
     position: "relative",
     marginBottom: "-4px",
+  },
+  delete: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+  deleteIcon: {
+    color: "white",
+    backgroundColor: "#eb3d30",
+    width: "20px",
+    height: "20px",
+    padding: "10px",
+    position: "absolute",
+    zIndex: "10",
+    opacity: "0",
   },
 };
