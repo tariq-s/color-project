@@ -14,11 +14,11 @@ export default {
     },
     [sizes.down("lg")]: {
       width: "25%",
-      height: (props) => (props.showingFullPalette ? "5%" : "10%"),
+      height: (props) => (props.showingFullPalette ? "20%" : "33.33%"),
     },
     [sizes.down("md")]: {
       width: "50%",
-      height: (props) => (props.showingFullPalette ? "10%" : "10%"),
+      height: (props) => (props.showingFullPalette ? "10%" : "20%"),
     },
     [sizes.down("xs")]: {
       width: "100%",
@@ -95,7 +95,7 @@ export default {
   },
   showOverlay: {
     opacity: "1",
-    transform: "scale(10)",
+    transform: "scale(50)",
     zIndex: "10",
     position: "absolute",
   },
@@ -121,6 +121,9 @@ export default {
       marginBottom: "0",
       padding: "1rem",
       textTransform: "uppercase",
+      [sizes.down("xs")]: {
+        fontSize: "6rem",
+      },
     },
     "& p": {
       fontSize: "2rem",
