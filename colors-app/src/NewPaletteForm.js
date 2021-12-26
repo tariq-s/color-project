@@ -78,7 +78,10 @@ class NewPaletteForm extends Component {
 
   addRandomColor() {
     const allColors = this.props.palettes.flatMap((palette) => palette.colors);
-    const randomColor = allColors[Math.floor(Math.random() * allColors.length)];
+    let randomColor = allColors[Math.floor(Math.random() * allColors.length)];
+    while (this.state.colors.some((color) => color.name === randomColor.name)) {
+      randomColor = allColors[Math.floor(Math.random() * allColors.length)];
+    }
     this.setState({ colors: [...this.state.colors, randomColor] });
   }
   onSortEnd = ({ oldIndex, newIndex }) => {
@@ -155,6 +158,7 @@ class NewPaletteForm extends Component {
             deleteColor={this.deleteColor}
             axis="xy"
             onSortEnd={this.onSortEnd}
+            distance={20}
           />
         </main>
       </div>
