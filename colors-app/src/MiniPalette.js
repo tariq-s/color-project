@@ -1,29 +1,40 @@
-import React from "react";
+import React, { Component } from "react";
 import { withStyles } from "@material-ui/styles";
 import styles from "./styles/MiniPaletteStyles";
 import Delete from "@material-ui/icons/Delete";
-function MiniPalette(props) {
-  const { classes, paletteName, emoji, colors, handleClick } = props;
-  const miniColorBoxes = colors.map((color) => (
-    <div
-      key={color.name}
-      className={classes.miniColor}
-      style={{ backgroundColor: color.color }}
-    />
-  ));
-  return (
-    <div className={classes.root} onClick={handleClick}>
-      <div className={classes.delete}>
-        <Delete
-          className={classes.deleteIcon}
-          style={{ transition: "all 0.3s ease-in-out" }}
-        />
+class MiniPalette extends Component {
+  constructor(props) {
+    super(props);
+    this.removeDeletePalette = this.removeDeletePalette.bind(this);
+  }
+  removeDeletePalette(e) {
+    e.stopPropagation();
+    this.props.handleDelete();
+  }
+  render() {
+    const { classes, paletteName, emoji, colors, handleClick } = this.props;
+    const miniColorBoxes = colors.map((color) => (
+      <div
+        key={color.name}
+        className={classes.miniColor}
+        style={{ backgroundColor: color.color }}
+      />
+    ));
+    return (
+      <div className={classes.root} onClick={handleClick}>
+        <div className={classes.delete}>
+          <Delete
+            className={classes.deleteIcon}
+            style={{ transition: "all 0.3s ease-in-out" }}
+            onClick={this.removeDeletePalette}
+          />
+        </div>
+        <div className={classes.colors}>{miniColorBoxes}</div>
+        <h5 className={classes.title}>
+          {paletteName} <span className={classes.emoji}>{emoji}</span>
+        </h5>
       </div>
-      <div className={classes.colors}>{miniColorBoxes}</div>
-      <h5 className={classes.title}>
-        {paletteName} <span className={classes.emoji}>{emoji}</span>
-      </h5>
-    </div>
-  );
+    );
+  }
 }
 export default withStyles(styles)(MiniPalette);
