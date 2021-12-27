@@ -32,6 +32,7 @@ export default class PaletteMetaForm extends Component {
       emoji: emoji.native,
     };
     this.props.handleSubmit(newPaletteInfo);
+    this.setState({ stage: "" });
   }
   componentDidMount() {
     ValidatorForm.addValidationRule("isPaletteNameUnique", (value) =>
