@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/the-color-project/static/css/main.403a25b4.css",
+    "main.js": "/the-color-project/static/js/main.9340d5c5.js",
+    "static/media/bg-final.svg": "/the-color-project/static/media/bg-final.966cacb5fbf47794eb289bb694ef23fd.svg",
+    "index.html": "/the-color-project/index.html",
+    "main.403a25b4.css.map": "/the-color-project/static/css/main.403a25b4.css.map",
+    "main.9340d5c5.js.map": "/the-color-project/static/js/main.9340d5c5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.403a25b4.css",
+    "static/js/main.9340d5c5.js"
+  ]
+}
