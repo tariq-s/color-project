@@ -42,6 +42,7 @@ export default class App extends Component {
     );
   }
   render() {
+    const { palettes } = this.state;
     return (
       <Route
         render={({ location }) => (
@@ -56,7 +57,7 @@ export default class App extends Component {
                       <NewPaletteForm
                         {...routeProps}
                         savePalette={this.savePalette}
-                        palettes={this.state.palettes}
+                        palettes={palettes}
                       />
                     </Page>
                   )}
@@ -67,7 +68,7 @@ export default class App extends Component {
                   render={(routeProps) => (
                     <Page>
                       <PaletteList
-                        palettes={this.state.palettes}
+                        palettes={palettes}
                         {...routeProps}
                         deletePalette={this.deletePalette}
                       />
@@ -106,9 +107,6 @@ export default class App extends Component {
           </TransitionGroup>
         )}
       />
-      // <div>
-      //   <Pallete palette={generatePalette(seedColors[1])} />
-      // </div>
     );
   }
 }

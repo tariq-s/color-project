@@ -16,9 +16,6 @@ import DraggableColorList from "./DraggableColorList";
 import { arrayMoveImmutable as arrayMove } from "array-move";
 import PlaletteFormNav from "./PlaletteFormNav";
 import ColorPickerForm from "./ColorPickerForm";
-// import styles from "./styles/NewPaletteFormStyles";
-// import seedColors from "./seedColors";
-
 import styles from "./styles/NewPaletteFormStyles";
 
 class NewPaletteForm extends Component {
@@ -90,7 +87,7 @@ class NewPaletteForm extends Component {
     }));
   };
   render() {
-    const { maxColors, classes, palettes, theme } = this.props;
+    const { maxColors, classes, palettes } = this.props;
     const { open, colors } = this.state;
     const paletteIsFull = colors.length === maxColors;
     return (
@@ -143,7 +140,7 @@ class NewPaletteForm extends Component {
             <ColorPickerForm
               paletteIsFull={paletteIsFull}
               addNewColor={this.addNewColor}
-              colors={this.state.colors}
+              colors={colors}
             />
           </div>
         </Drawer>
@@ -154,7 +151,7 @@ class NewPaletteForm extends Component {
         >
           <div className={classes.drawerHeader} />
           <DraggableColorList
-            colors={this.state.colors}
+            colors={colors}
             deleteColor={this.deleteColor}
             axis="xy"
             onSortEnd={this.onSortEnd}
