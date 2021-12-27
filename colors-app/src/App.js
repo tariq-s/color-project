@@ -74,7 +74,7 @@ export default class App extends Component {
                       />
                     </Page>
                   )}
-                ></Route>
+                />
                 <Route
                   exact
                   path="/palette/:id"
@@ -98,6 +98,17 @@ export default class App extends Component {
                         palette={generatePalette(
                           this.findPalette(routeProps.match.params.paletteId)
                         )}
+                      />
+                    </Page>
+                  )}
+                />
+                <Route
+                  render={(routeProps) => (
+                    <Page>
+                      <PaletteList
+                        palettes={palettes}
+                        {...routeProps}
+                        deletePalette={this.deletePalette}
                       />
                     </Page>
                   )}
