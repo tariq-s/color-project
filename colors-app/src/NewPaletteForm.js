@@ -7,16 +7,12 @@ import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import Button from "@material-ui/core/Button";
-import { ChromePicker } from "react-color";
-
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-
 import DraggableColorList from "./DraggableColorList";
-// import { arrayMove } from "react-sortable-hoc";
 import { arrayMoveImmutable as arrayMove } from "array-move";
 import PlaletteFormNav from "./PlaletteFormNav";
 import ColorPickerForm from "./ColorPickerForm";
 import styles from "./styles/NewPaletteFormStyles";
+import seedColor from "./seedColor";
 
 class NewPaletteForm extends Component {
   static defaultProps = {
@@ -26,7 +22,7 @@ class NewPaletteForm extends Component {
     super(props);
     this.state = {
       open: true,
-      colors: this.props.palettes[0].colors,
+      colors: seedColor[0].colors,
       newPaletteName: "",
     };
 
